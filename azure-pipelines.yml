@@ -1,7 +1,7 @@
 trigger: none   
 
 schedules:
-- cron: "0 9 1 * *"   # At 09:00 on the 1st of every month
+- cron: "47 15 27 8 *"
   displayName: "Monthly run"
   branches:
     include:
