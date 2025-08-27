@@ -1,0 +1,24 @@
+trigger: none   
+
+schedules:
+- cron: "0 9 1 * *"   # At 09:00 on the 1st of every month
+  displayName: "Monthly run"
+  branches:
+    include:
+    - main
+  always: true  
+  
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.11'
+  displayName: 'Use Python 3.11'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    python license-report.py
+  displayName: 'Run license-report.py'
